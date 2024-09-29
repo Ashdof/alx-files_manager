@@ -12,13 +12,13 @@ class RedisClient {
     });
 
     this.client.on('connect', () => {
-      console.log('Redis client connected successfully.');
+    //   console.log('Redis client connected successfully.');
     });
   }
 
   /**
    * Checks if the connection to redis is successful
-   * @return {boolean} true if connection alive or false if not
+   * @return {boolean} true if connection is successful or false if not
    */
   isAlive() {
     return this.client.connected;
@@ -40,7 +40,7 @@ class RedisClient {
    * @key {string} key to be saved in redis
    * @value {string} value to be asigned to key
    * @duration {number} TTL of key
-   * @return {undefined}  No return
+   * @return {undefined}  No return value
    */
   async set(key, value, duration) {
     this.client.setex(key, duration, value);
@@ -49,7 +49,7 @@ class RedisClient {
   /**
    * Deletes key in redis service
    * @key {string} key to be deleted
-   * @return {undefined}  No return
+   * @return {undefined}  No return value
    */
   async del(key) {
     this.client.del(key);
